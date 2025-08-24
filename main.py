@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 import os, time, traceback
-from pprint import pformat
 from openai import OpenAI
 from telebot import TeleBot, types
 
 # Можно заменить на базовый промпт другого персонажа
 from config import base_prompt as base_prompt
-from utils import log_error, load_memory, save_memory
+from utils import log_error, load_history, save_history
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -18,7 +17,7 @@ bot = TeleBot(TELEGRAM_TOKEN, parse_mode="HTML")
 client = OpenAI(api_key=OPEN_ROUTER_API_KEY, base_url="https://openrouter.ai/api/v1")
 
 MAX_HISTORY_LENGTH = 7
-user_histories = load_memory()
+user_histories = load_history()
 
 # Берем id и username что бы 
 me = bot.get_me()
@@ -87,7 +86,7 @@ def on_text(message: types.Message):
 
         # Добавляем ответ ИИ в историю
         user_histories[user_id].append({"role": "assistant", "content": answer})
-        save_memory(user_histories)
+        save_history(user_histories)
 
         if len(answer) >= 4000:
             answer = answer[:4000]

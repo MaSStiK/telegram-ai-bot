@@ -1,5 +1,5 @@
 __pycache__
 .env
 
-dialog_memory.json
+history.json
 error.json
