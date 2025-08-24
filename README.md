@@ -12,3 +12,15 @@ OPEN_ROUTER_API_KEY=""
 # Токен от бота в Telegram
 TELEGRAM_TOKEN=""
 ```
+
+## Установка зависимостей
+
+```bash
+pip install -r requirements.txt
+```
+
+## Запуск
+
+```bash
+python main.py
+```
