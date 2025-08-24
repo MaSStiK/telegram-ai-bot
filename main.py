@@ -19,7 +19,7 @@ client = OpenAI(api_key=OPEN_ROUTER_API_KEY, base_url="https://openrouter.ai/api
 MAX_HISTORY_LENGTH = 7
 user_histories = load_history()
 
-# Берем id и username что бы 
+# Берем id и username для упоминаний
 me = bot.get_me()
 BOT_ID = me.id
 BOT_USERNAME = (me.username or "").lower()
